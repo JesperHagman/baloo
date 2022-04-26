@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import React, { useState} from 'react'
 import Link from "next/link"; 
 
 const LoginComponent = ({ pathName }) => {
 
   const [details, setDetails] = useState({ email: "", password: ""})
   const [error, setError] = useState("")
-  const router = useRouter()
-  
-  useEffect(() => {
-   router.prefetch(pathName) // Prefetch the profile page
- }, [])
    
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -31,10 +25,7 @@ const LoginComponent = ({ pathName }) => {
     .then((data) => {
       if (data.loggedIn) {
         const userData = data.userData
-        dispatch({
-          type: 'SET_LOGGED_IN',
-          id: userData // setting userID as id for later us and as validation for profile-Page
-      })
+        localStorage.setItem("userID" , userData)
         router.push({
           pathname: pathName //redirecting to profile page if details match
         });
