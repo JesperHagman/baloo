@@ -6,7 +6,7 @@ const Navbar = () => {
   <div className={styles.container}>
   <div className={styles.item}>
   <div className={styles.chatButton}>
-    <Image src="/img/bear.jpg" alt="" height="100%" width="100%" />
+    <Image src="/img/bear2.jpg" alt="" height="100%" width="100%" />
   </div>
   
   <div className={styles.texts}>
