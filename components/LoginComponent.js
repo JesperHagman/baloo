@@ -1,11 +1,13 @@
 import React, { useState} from 'react'
+import { useRouter } from 'next/router'
 import Link from "next/link"; 
 import styles from "../styles/form.module.css"
 
-const LoginComponent = ({ pathName }) => {
+const LoginComponent = () => {
 
   const [details, setDetails] = useState({ email: "", password: ""})
   const [error, setError] = useState("")
+  const router = useRouter()
    
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -27,9 +29,7 @@ const LoginComponent = ({ pathName }) => {
       if (data.loggedIn) {
         const userData = data.userData
         localStorage.setItem("userID" , userData)
-        router.push({
-          pathname: pathName //redirecting to profile page if details match
-        });
+        router.push("/dashboard") //redirecting to profile page if details match
       } else {
         setError(data.message)
       }
