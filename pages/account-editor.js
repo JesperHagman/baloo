@@ -1,5 +1,5 @@
 import {useState} from "react";
-import styles from '../styles/account-editor.module.css'
+import styles from '../styles/form.module.css'
 
 export default function Editor () {
     const [disabled, setDisabled] = useState('disabled')
