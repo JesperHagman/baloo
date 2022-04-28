@@ -1,5 +1,6 @@
 import React, { useState} from 'react'
 import Link from "next/link"; 
+import styles from "../styles/form.module.css"
 
 const LoginComponent = ({ pathName }) => {
 
@@ -36,29 +37,30 @@ const LoginComponent = ({ pathName }) => {
   }
 
     return ( 
-      <form onSubmit={handleLogin}>
-        <div>
-          <h2>Logga in</h2>
-          <p> {error} </p> {/* message for the user if details does not match */}
+      <div className={styles.wrapper}>
+      <form onSubmit={handleLogin} className={styles.form}>
+        <h1>Logga in</h1>
+        <p> {error} </p> {/* message for the user if details does not match */}
 
-          <div>
-            <label htmlFor='email'>Epost:</label>
-            <input type="text" email="email" id="email" required onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
-          </div>
+        <label htmlFor='email'>Epost:</label>
+        <input className={styles.input} type="text" email="email" id="email" required onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
+      
 
-          <div>
-            <label htmlFor='password'>Lössenord:</label>
-            <input type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
-          </div>
-            
-          <input type="submit" value="LOGGA IN"/>
-          <button>
-           <Link href="/register" >
-               <a> REGISTRERA </a>
-           </Link>
-           </button>
+      
+        <label htmlFor='password'>Lösenord:</label>
+        <input className={styles.input} type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
+      
+        <div className={styles.btn_wrapper}>
+          <input className={styles.btn} type="submit" value="LOGGA IN"/>
+          <button className={styles.btn}>
+          <Link href="/register" >
+              <a> REGISTRERA </a>
+          </Link>
+          </button>
         </div>
+        
       </form>
+      </div>
     )
   }   
 export default LoginComponent;
