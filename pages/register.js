@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import styles from '../styles/form.module.css'
 
 
 export default function Register() {
@@ -32,33 +33,34 @@ export default function Register() {
   }
 
   return (
-    <form onSubmit={registerHandler}>
-        <div>
-            <h2>Registrera</h2>
+    <div className={styles.wrapper}>
+        <form onSubmit={registerHandler} className={styles.form}>
+            <h1>Registrera</h1>
             <p> {message} </p> {/* error or success message for the user */}
             
-            <div>
+        
                 <label htmlFor='name'>Namn:</label>
-                <input type="text" name="name" id="name" required onChange={e =>setDetails({...details, name: e.target.value})} value={details.name}/>
-            </div>
+                <input className={styles.input} type="text" name="name" id="name" required onChange={e =>setDetails({...details, name: e.target.value})} value={details.name}/>
+            
 
-            <div>
+        
                 <label htmlFor='phone'>Mobil:</label>
-                <input type="text" phone="phone" id="phone" required onChange={e =>setDetails({...details, phone: e.target.value})} value={details.phone}/>
-            </div>
+                <input className={styles.input} type="text" phone="phone" id="phone" required onChange={e =>setDetails({...details, phone: e.target.value})} value={details.phone}/>
+            
 
-            <div>
+        
                 <label htmlFor='email'>Epost:</label>
-                <input type="text" email="email" id="email" required onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
-            </div>
+                <input className={styles.input} type="text" email="email" id="email" required onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
+            
 
-            <div>
+        
                 <label htmlFor='password'>Lössenord:</label>
-                <input type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
+                <input className={styles.input} type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
+            
+            <div className={styles.btn_wrapper}>
+                <input type="submit" value="REGISTER" className={styles.btn}/>
             </div>
-
-            <input type="submit" value="REGISTER"/>
-        </div>
-    </form>
+        </form>
+    </div>
   )
 }
